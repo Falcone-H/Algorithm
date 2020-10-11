@@ -30,6 +30,6 @@ int main() {
         coins.emplace_back(num);
     }
     cin >> amount;
-    coinChange(coins, amount);
+    cout << coinChange(coins, amount) << endl;
     return 0;
 }
