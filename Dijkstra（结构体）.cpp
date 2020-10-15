@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 
-#define long long int
+#define int long long
 using namespace std;
 int n, m, s;    //n个点，m条边，从第s号点开始
 int node;   //当前正在处理的节点

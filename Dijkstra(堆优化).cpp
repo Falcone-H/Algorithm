@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 
-#define long long int
+#define int long long
 using namespace std;
 const int N = 100005;
 int n, m;

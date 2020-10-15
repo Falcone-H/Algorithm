@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 
-#define long long int
+#define int long long
 using namespace std;
 int dis[100][100];
 int n, m;   //n为节点数，m为边数
