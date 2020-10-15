@@ -40,6 +40,7 @@ void Dijkstra(int s) {
         q.pop();
         if (vis[node.id])
             continue;
+        vis[node.id] = true;
         for (int i = 0; i < g[node.id].size(); i++) {   //遍历与当前节点相连的边
             int exit = g[node.id][i].first; //该边的终点
             int len = g[node.id][i].second; //该边的权
