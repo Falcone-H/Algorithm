@@ -33,3 +33,12 @@ int main() {
     }
     return 0;
 }
+
+/*
+空间优化:
+for (i = 1; i <= n; i++) {
+    for(j = m; j >= w[i]; j--){     //必须逆向枚举，不然之前的状态会被覆盖
+        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);
+    }
+}
+*/
