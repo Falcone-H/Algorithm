@@ -12,8 +12,13 @@ signed main() {
         cin >> w[i] >> v[i];
     }
     for (int i = 1; i <= n; i++) {
-        for (int j = w[i]; j <= m; j++) {
-            dp[i][j] = max(dp[i - 1][j], dp[i][j - w[i]] + v[i]);
+        for (int j = 1; j <= m; j++) {
+            if(j >= w[i]) {
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - w[i]] + v[i]);
+            }  else {
+                dp[i][j] = dp[i - 1][j];
+            }
+            
         }
     }
     return 0;
