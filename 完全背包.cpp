@@ -13,12 +13,9 @@ signed main() {
     }
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
-            if(j >= w[i]) {
-                dp[i][j] = max(dp[i - 1][j], dp[i][j - w[i]] + v[i]);
-            }  else {
-                dp[i][j] = dp[i - 1][j];
+            for(int k = 0; k * w[i] <= j; k++) {
+                dp[i][j] = max(dp[i][j], dp[i - 1][j - k * w[i]] + k * v[i]);
             }
-            
         }
     }
     return 0;
