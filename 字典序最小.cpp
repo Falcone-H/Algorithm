@@ -11,13 +11,13 @@ void solve(string &s, string &t) {
     while (left <= right) {
         bool flag = false;
         for (int i = 0; left + i <= right; i++) {
-            if (s[left + i] < s[right - i]) {   //顺序字符串小
+            if (s[left + i] < s[right - i]) {   // 顺序字符串小
                 flag = true;
                 break;
-            } else if (s[left + i] > s[right - i]) {    //反序字符串小
+            } else if (s[left + i] > s[right - i]) {    // 反序字符串小
                 flag = false;
                 break;
-            } else {    //若相等，则继续比较下一个字符
+            } else {    // 若相等，则继续比较下一个字符
                 continue;
             }
         }
