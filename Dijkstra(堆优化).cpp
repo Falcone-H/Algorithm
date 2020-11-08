@@ -6,15 +6,15 @@ const int N = 100005;
 int n, m;
 bool vis[N];
 int dis[N];
-vector<pair<int, int>> g[N];
+vector<pair<int, int>> g[N];    //first为初始点的要到的终点，second为距离
 
 struct Node {
-    int id;
-    int dist;
+    int id; //该点的编号
+    int dist;   //该点到起始点的距离
 
     Node() {};
 
-    Node(int id, int d) : id(id), dist{d} {};
+    Node(int id, int d) : id(id), dist(d) {};
 
     friend bool operator < (Node A, Node B){
         return B.dist < A.dist;
