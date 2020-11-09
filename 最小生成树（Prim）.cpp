@@ -5,7 +5,6 @@ using namespace std;
 int n, m;
 int graph[105][105];
 int val[105];   //记录当前集合中的点到其他位置的最短距离
-int index[105]; //记录当前集合中的父亲节点
 
 void printVal() {
     for (int i = 1; i <= n; i++) {
@@ -17,7 +16,6 @@ void printVal() {
 void init() {
     for (int i = 0; i <= n; i++) {
         val[i] = INT_MAX;
-        index[i] = -1;
     }
     for (int i = 0; i <= n; i++) {
         for (int j = 0; j <= n; j++) {
@@ -35,21 +33,17 @@ void Prim() {
     int cnt = 0;
     for (int i = 1; i <= n; i++) {  //选择一号节点为初始点
         val[i] = graph[1][i];
-        index[i] = 1;
     }
     while (cnt < n - 1) {
-        int k;
+        int k = -1;
         int minv = INT_MAX;
-        bool flag = false;
         for (int i = 1; i <= n; i++) {  //选出与当前集合距离最小的点
-            if(val[i] != 0 && val[i] != INT_MAX)
-                flag = true;
             if (val[i] < minv && val[i] != 0) {
                 minv = val[i];
                 k = i;
             }
         }
-        if(!flag){  //不能找出最小生成树
+        if(k == -1){  //不能找出最小生成树
             cout << -1 << endl;
             return ;
         }
@@ -59,7 +53,6 @@ void Prim() {
         for (int i = 1; i <= n; i++) {  //缩小其他点到当前集合的距离
             if (val[i] > graph[k][i]) {
                 val[i] = graph[k][i];
-                index[i] = k;
             }
         }
     }
