@@ -9,6 +9,20 @@ struct edge {
 int n, m;   //n个点，m条边
 int dis[1005];
 
+bool find_negative() {  //检查负回路
+    bool f = 0;
+    memset(dis, 0, sizeof(dis));
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= m; j++) {
+            if(dis[edge[j].to] > dis[edge[j].from] + edge[j].cost) {
+                dis[edge[j].to] = dis[edge[j].from] + edge[j].cost;
+                if(i == n)
+                    return 1;   //如果更新了n次，那么一定有负环
+            }
+        }
+    }
+}
+
 void Ford(int s) {
     for (int i = 0; i < n; i++) {
         dis[i] = INT_MAX;
