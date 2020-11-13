@@ -41,7 +41,7 @@ int main() {
     cin >> s >> t;
     getNext(next, t);
     int j = 0, k = 0;
-    int len = t.size(); // 负数与t.size()比较，会返回0
+    int len = t.size(); // t.size()为unsigned int类型，如果负数和它直接比较，负数会先转成unsigned int类型，变成一个很大的正整数，再与其比较。
     while ((j < s.size()) && (k < len)) {
         if ((k == -1) || (s[j] == t[k])) {
             j++;
