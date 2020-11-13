@@ -5,7 +5,7 @@ using namespace std;
 void getNext(int next[], string t) {
     next[0] = -1;
     int j = 0, k = -1;
-    while (j < t.size() - 1) {
+    while (j < t.size()) {
         if ((k == -1) || (t[j] == t[k])) {
             j++;
             k++;
@@ -16,7 +16,7 @@ void getNext(int next[], string t) {
     }
 }
 
-//优化
+//浼樺寲
 //void getNext(int next[], string t) {
 //    next[0] = -1;
 //    int j = 0, k = -1;
@@ -25,7 +25,7 @@ void getNext(int next[], string t) {
 //            j++;
 //            k++;
 //            if(t[j] == t[k])
-//                next[j] = next[k];  //两个字符相同时，跳过
+//                next[j] = next[k];  //涓や釜瀛楃鐩稿悓鏃讹紝璺宠繃
 //            else
 //                next[j] = k;
 //        } else {
@@ -37,11 +37,11 @@ void getNext(int next[], string t) {
 
 int main() {
     int next[1000];
-    string s, t;    //s为主字符串，t为模板字符串
+    string s, t;    //s涓轰富瀛楃涓诧紝t涓烘ā鏉垮瓧绗︿覆
     cin >> s >> t;
     getNext(next, t);
     int j = 0, k = 0;
-    int len = t.size(); // 负数与t.size()比较，会返回0
+    int len = t.size(); // 璐熸暟涓巘.size()姣旇緝锛屼細杩斿洖0
     while ((j < s.size()) && (k < len)) {
         if ((k == -1) || (s[j] == t[k])) {
             j++;
