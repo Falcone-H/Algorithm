@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-int n, m;   //n¸öµã£¬ mÌõ±ß
+int n, m;   //nä¸ªç‚¹ï¼Œ mæ¡è¾¹
 struct Graph {
     int begin;
     int end;
@@ -24,20 +24,20 @@ int find(int x) {
     if (par[x] == x)
         return x;
     else
-        return par[x] = find(x);
+        return par[x] = find(par[x]);
 }
 
 void Kruskal() {
     for (int i = 0; i < m; i++) {
         int x1 = find(edge[i].begin);
         int x2 = find(edge[i].end);
-        if (x1 != x2) {   //Èôx1 == x2, ÔòĞÎ³É»·Â·£¬²»Âú×ãÌõ¼ş
+        if (x1 != x2) {   //è‹¥x1 == x2, åˆ™å½¢æˆç¯è·¯ï¼Œä¸æ»¡è¶³æ¡ä»¶
             if (x1 > x2)
                 swap(x1, x2);
             par[x2] = x1;
             cnt++;
             printf("%d %d %d\n", edge[i].begin, edge[i].end, edge[i].weight);
-            if (cnt == n - 1)    //×îĞ¡Éú³ÉÊ÷µÄ±ßÊı µÈÓÚ µãÊı-1
+            if (cnt == n - 1)    //æœ€å°ç”Ÿæˆæ ‘çš„è¾¹æ•° ç­‰äº ç‚¹æ•°-1
                 break;
         }
     }
