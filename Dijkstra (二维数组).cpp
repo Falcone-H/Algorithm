@@ -1,12 +1,12 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-int dis[1000];  //¼ÇÂ¼½á¹û
-int vis[1000];  //¼ÇÂ¼ÊÇ·ñ·ÃÎÊ¹ı
-int edge[100][100]; //¼ÇÂ¼¾àÀë
-int prev[1000]; //¼ÇÂ¼Â·¾¶
+int dis[1000];  //è®°å½•ç»“æœ
+int vis[1000];  //è®°å½•æ˜¯å¦è®¿é—®è¿‡
+int edge[100][100]; //è®°å½•è·ç¦»
+int prev[1000]; //è®°å½•è·¯å¾„
 
-void get_path(int t) {  //tÎªÒªµ½´ïµÄµã
+void get_path(int t) {  //tä¸ºè¦åˆ°è¾¾çš„ç‚¹
     vector<int> path;
     for(; t != -1; t = prev[t])
         path.push_back(t);
@@ -26,19 +26,19 @@ void Dijkstra(int n) {
     }
     dis[1] = 0;
     vis[1] = 1;
-    for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= n; j++) {
         int x, minn = 10000000;
-        for (int i = 1; i <= n; i++) {  // ´ÓÃ»ÓĞ·ÃÎÊ¹ıµÄ½ÚµãÖĞ£¬Ñ¡³ö×îĞ¡Öµ
+        for (int i = 1; i <= n; i++) {  // ä»æ²¡æœ‰è®¿é—®è¿‡çš„èŠ‚ç‚¹ä¸­ï¼Œé€‰å‡ºæœ€å°å€¼
             if (!vis[i] && dis[i] < minn) {
                 minn = dis[i];
                 x = i;
             }
         }
         vis[x] = 1;
-        for (int i = 1; i <= n; i++) {  // ËÉ³Ú
+        for (int i = 1; i <= n; i++) {  // æ¾å¼›
             if(dis[i] > dis[x] + edge[x][i]){
                 dis[i] = dis[x] + edge[x][i];
-                prev[i] = x;    //¼ÇÂ¼ÉÏÒ»¸ö½Úµã
+                prev[i] = x;    //è®°å½•ä¸Šä¸€ä¸ªèŠ‚ç‚¹
             }
         }
     }

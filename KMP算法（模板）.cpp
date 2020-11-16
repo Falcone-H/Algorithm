@@ -5,7 +5,7 @@ using namespace std;
 void getNext(int next[], string t) {
     next[0] = -1;
     int j = 0, k = -1;
-    while (j < t.size() - 1) {
+    while (j < t.size()) {
         if ((k == -1) || (t[j] == t[k])) {
             j++;
             k++;
@@ -16,7 +16,7 @@ void getNext(int next[], string t) {
     }
 }
 
-//ÓÅ»¯
+//ä¼˜åŒ–
 //void getNext(int next[], string t) {
 //    next[0] = -1;
 //    int j = 0, k = -1;
@@ -25,7 +25,7 @@ void getNext(int next[], string t) {
 //            j++;
 //            k++;
 //            if(t[j] == t[k])
-//                next[j] = next[k];  //Á½¸ö×Ö·ûÏàÍ¬Ê±£¬Ìø¹ı
+//                next[j] = next[k];  //ä¸¤ä¸ªå­—ç¬¦ç›¸åŒæ—¶ï¼Œè·³è¿‡
 //            else
 //                next[j] = k;
 //        } else {
@@ -37,11 +37,11 @@ void getNext(int next[], string t) {
 
 int main() {
     int next[1000];
-    string s, t;    //sÎªÖ÷×Ö·û´®£¬tÎªÄ£°å×Ö·û´®
+    string s, t;    //sä¸ºä¸»å­—ç¬¦ä¸²ï¼Œtä¸ºæ¨¡æ¿å­—ç¬¦ä¸²
     cin >> s >> t;
     getNext(next, t);
     int j = 0, k = 0;
-    int len = t.size(); // ¸ºÊıÓët.size()±È½Ï£¬»á·µ»Ø0
+    int len = t.size(); // t.size()ä¸ºunsigned intç±»å‹ï¼Œå¦‚æœè´Ÿæ•°å’Œå®ƒç›´æ¥æ¯”è¾ƒï¼Œè´Ÿæ•°ä¼šå…ˆè½¬æˆunsigned intç±»å‹ï¼Œå˜æˆä¸€ä¸ªå¾ˆå¤§çš„æ­£æ•´æ•°ï¼Œå†ä¸å…¶æ¯”è¾ƒã€‚
     while ((j < s.size()) && (k < len)) {
         if ((k == -1) || (s[j] == t[k])) {
             j++;
