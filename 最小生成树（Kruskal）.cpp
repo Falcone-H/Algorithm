@@ -49,6 +49,6 @@ int main() {
     for (int i = 0; i < m; i++) {
         cin >> edge[i].begin >> edge[i].end >> edge[i].weight;
     }
-    sort(edge, edge + n, cmp);
+    sort(edge, edge + m, cmp);
     Kruskal();
 }
