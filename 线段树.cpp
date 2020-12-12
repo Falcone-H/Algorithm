@@ -84,9 +84,9 @@ void pushdown(int k) {
         a[k].lazy = 0;
         return;
     }
-    // 改变右边子区间的和
-    a[k << 1].sum += (a[k << 1].right - a[k << 1].left + 1) * a[k].lazy;
     // 改变左边子区间的和
+    a[k << 1].sum += (a[k << 1].right - a[k << 1].left + 1) * a[k].lazy;
+    // 改变右边子区间的和
     a[k << 1 | 1].sum += (a[k << 1 | 1].right - a[k << 1 | 1].left + 1) * a[k].lazy;
     // 给k的子节点的懒惰标记重新赋值，下传标记
     a[k << 1].lazy += a[k].lazy;
@@ -101,9 +101,9 @@ int query(int k, int left, int right) {
     if(a[k].left == left && a[k].right == right)    // 如果当前区间就是被询问区间，完全重合，那么直接返回
         return a[k].sum;
     int mid = (a[k].left + a[k].right) / 2;
-    if(right <= mid)    // 如果询问区间包含在左子区间中
+    if(right <= mid)    // 如果询问区间包含在右子区间中
         return query(k << 1 | 1, left, right);
-    if(left > mid)      // 如果询问区间包含在右子区间中
+    if(left > mid)      // 如果询问区间包含在左子区间中
         return query(k << 1, left, right);
     // 如果询问区间跨越两个子区间
     return query(k << 1, left, mid) + query(k << 1 | 1, mid + 1, right);
