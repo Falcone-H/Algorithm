@@ -7,7 +7,7 @@ struct node{
     int left, right;    // 区间的左右边界
     int sum;            // 区间元素之和
     int lazy;           // 懒惰标记
-}a[N];
+}a[4 * N + 2];
 
 
 // 更新
@@ -31,6 +31,23 @@ void build(int k, int left, int right) {
     build(k << 1, left, mid);   // 递归到左儿子
     build(k << 1 | 1, mid + 1, right);  // 递归到右儿子
     update(k);      // 用左右子区间的值来更新整个区间的值
+}
+
+// 下传标记
+void pushdown(int k) {
+    if(a[k].left == a[k].right) {
+        // 如果节点k已经是叶节点，没有子节点，那么标记就不用下传，直接删除即可
+        a[k].lazy = 0;
+        return;
+    }
+    // 改变左边子区间的和
+    a[k << 1].sum += (a[k << 1].right - a[k << 1].left + 1) * a[k].lazy;
+    // 改变右边子区间的和
+    a[k << 1 | 1].sum += (a[k << 1 | 1].right - a[k << 1 | 1].left + 1) * a[k].lazy;
+    // 给k的子节点的懒惰标记重新赋值，下传标记
+    a[k << 1].lazy += a[k].lazy;
+    a[k << 1 | 1].lazy += a[k].lazy;
+    a[k].lazy = 0;  // 清空标记
 }
 
 
@@ -62,6 +79,7 @@ void changeSegment(int k, int left, int right, int x) {
         // 懒惰标记叠加
         return;
     }
+    pushdown(k);
     int mid = (a[k].left + a[k].right) / 2;
     if(right <= mid)
         // 如果被修改区间完全在左区间
@@ -75,23 +93,6 @@ void changeSegment(int k, int left, int right, int x) {
         changeSegment(k << 1 | 1, mid + 1, right, x);
     }
     update(k);  // 更新k点的值
-}
-
-// 下传标记
-void pushdown(int k) {
-    if(a[k].left == a[k].right) {
-        // 如果节点k已经是叶节点，没有子节点，那么标记就不用下传，直接删除即可
-        a[k].lazy = 0;
-        return;
-    }
-    // 改变左边子区间的和
-    a[k << 1].sum += (a[k << 1].right - a[k << 1].left + 1) * a[k].lazy;
-    // 改变右边子区间的和
-    a[k << 1 | 1].sum += (a[k << 1 | 1].right - a[k << 1 | 1].left + 1) * a[k].lazy;
-    // 给k的子节点的懒惰标记重新赋值，下传标记
-    a[k << 1].lazy += a[k].lazy;
-    a[k << 1 | 1].lazy += a[k].lazy;
-    a[k].lazy = 0;  // 清空标记
 }
 
 // 当前节点为k，查询[left...right]的和
@@ -111,5 +112,21 @@ int query(int k, int left, int right) {
 
 
 int main() {
-
+    int n, m;
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++) {
+        cin >> number[i];
+    }
+    build(1, 1, n);
+    int x, l, r;
+    for (int i = 1; i <= m; i++) {
+        cin >> x >> l >> r;
+        if (x == 1) {
+            int v;
+            cin >> v;
+            changeSegment(1, l, r, v);
+        } else if (x == 2) {
+            cout << query(1, l, r) << endl;
+        }
+    }
 }
