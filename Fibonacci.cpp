@@ -1,6 +1,6 @@
 // https://ac.nowcoder.com/acm/contest/9925/G
-// 思路：一个斐波那契数列为1，1，2，3，5，8，13，21...
-// 算了，明天再写
+// 思路：https://blog.csdn.net/weixin_45780686/article/details/111300784
+
 
 #include<bits/stdc++.h>
 
