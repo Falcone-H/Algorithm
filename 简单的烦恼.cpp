@@ -1,6 +1,5 @@
 // https://ac.nowcoder.com/acm/problem/25184
 // 思路：01背包
-// 每首歌都可以听无数次，然后相当于在以time - 1为容量的背包中，挑选物品，每一种物品都有无数个。
 #include<bits/stdc++.h>
 
 using namespace std;
