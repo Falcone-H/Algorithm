@@ -60,7 +60,7 @@ bool check_right(int index)
     int i = 1;
     if (v[index][v[index].size() - 1] == '#')
         return true;
-    while ((int)(v[index].size() - i) >= r)
+    while ((int)(v[index].size() - i) >= r) // 注意这里，因为string.size()返回的是unsigned long 类型，只有正整数，因此，减 i 变成负数后，也会转成正数，比 r 大
     {
         int x1 = v[index].size() - i;
         int x2 = partr.size() - i;
