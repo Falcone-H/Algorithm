@@ -4,7 +4,7 @@
 #include <bits/stdc++.h>
 #define int long long
 using namespace std;
-int mod = 1e9 + 7;
+int mod = 1e9 + 5;
 int front[100005];
 int back[100005];
 map<int, int> m;
