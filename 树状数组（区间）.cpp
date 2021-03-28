@@ -38,7 +38,7 @@ int getSum(int i)
     return res;
 }
 
-int main()
+signed main()
 {
     cin >> n;
     for (int i = 1; i <= n; i++)
