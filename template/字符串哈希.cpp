@@ -14,7 +14,7 @@ string s;
 void init()
 {
     bin[0] = 1;
-    for (int i = 0; i < s.size(); i++)
+    for (int i = 1; i < s.size(); i++)
     {
         bin[i] = bin[i - 1] * p;
     }
