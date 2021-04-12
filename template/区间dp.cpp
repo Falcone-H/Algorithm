@@ -4,7 +4,7 @@
 using namespace std;
 const int N = 1005;
 int stone[N];
-int dp[N][N];
+int dp[N][N];   // dp[i][j]表示把第 i 堆和第 j 堆合起来的最小花费
 int sum[N];
 int n;
 
