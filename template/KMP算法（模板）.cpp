@@ -2,20 +2,15 @@
 
 using namespace std;
 
-void getNext(int next[], string t)
-{
+void getNext(int next[], string t) {
     next[0] = -1;
     int j = 0, k = -1;
-    while (j < t.size())
-    {
-        if ((k == -1) || (t[j] == t[k]))
-        {
+    while (j < t.size()) {
+        if ((k == -1) || (t[j] == t[k])) {
             j++;
             k++;
             next[j] = k;
-        }
-        else
-        {
+        } else {
             k = next[k];
         }
     }
@@ -41,33 +36,24 @@ void getNext(int next[], string t) {
 }
 */
 
-int main()
-{
+int main() {
     int next[1000];
     string s, t; //s为主字符串，t为模板字符串
     cin >> s >> t;
     getNext(next, t);
     int j = 0, k = 0;
     int len = t.size(); // t.size()为unsigned int类型，如果负数和它直接比较，负数会先转成unsigned int类型，变成一个很大的正整数，再与其比较。
-    while ((j < s.size()) && (k < len))
-    {
-        if ((k == -1) || (s[j] == t[k]))
-        {
+    while ((j < s.size()) && (k < len)) {
+        if ((k == -1) || (s[j] == t[k])) {
             j++;
             k++;
-        }
-        else
-        {
+        } else {
             k = next[k];
         }
-    }
-    if (k >= t.size())
-    {
-        cout << (j - t.size()) << endl;
-    }
-    else
-    {
-        cout << -1 << endl;
+        if(k == len) {
+            cout << j - len << "\n";
+            k = next[k];
+        }
     }
     return 0;
 }
