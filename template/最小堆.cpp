@@ -13,6 +13,7 @@ void push(int num){
         heap[i] = heap[par];    //将父亲节点的数值换下来
         i = par;
     }
+    heap[i] = num;
 }
 
 int pop(){
