@@ -25,7 +25,7 @@ void Hash(string s)
     hashs[0] = 0;
     for (int i = 1; i < s.size(); i++)
     {
-        hashs[i] = hashs[i - 1] * p + (s[i] - 'a');
+        hashs[i] = hashs[i - 1] * p + s[i]);
     }
 }
 

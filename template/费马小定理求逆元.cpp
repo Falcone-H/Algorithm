@@ -1,3 +1,4 @@
+// 这种方法只能在 P 为质数的情况下使用
 #include<bits/stdc++.h>
 #define int long long
 using namespace std;
