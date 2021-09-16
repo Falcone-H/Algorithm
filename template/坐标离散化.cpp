@@ -23,6 +23,7 @@ int compress(int *x1, int *x2, int w) {
         for (int d = -1; d <= 1; d++) {
             int tx1 = x1[i] + d;
             int tx2 = x2[i] + d;
+            // 原坐标从 (1, 1) 开始
             if (1 <= tx1 && tx1 <= W) xs.push_back(tx1);
             if (1 <= tx2 && tx2 <= W) xs.push_back(tx2);
         }
@@ -56,6 +57,7 @@ void solve() {
 
     // 求区域个数
     int ans = 0;
+    // 离散化后的坐标从 0 开始
     for (int y = 0; y < H; y++) {
         for (int x = 0; x < W; x++) {
             if (fld[y][x]) continue;
@@ -87,5 +89,15 @@ void solve() {
 }
 
 int main() {
-
+    cin >> W >> H >> N;
+    for(int i = 0; i < N; i++)
+        scanf("%d", &X1[i]);
+    for(int i = 0; i < N; i++)
+        scanf("%d", &X2[i]);
+    for(int i = 0; i < N; i++)
+        scanf("%d", &Y1[i]);
+    for(int i = 0; i < N; i++)
+        scanf("%d", &Y2[i]);
+    solve();
+    return 0;
 }
