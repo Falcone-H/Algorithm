@@ -9,7 +9,7 @@
 using namespace std;
 const int N = 4005;
 int a[N], b[N], c[N], d[N];
-int n;
+intconst n;
 int v[N * N];
 
 int binarySearch(int target) {
